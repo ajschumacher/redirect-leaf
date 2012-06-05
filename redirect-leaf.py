@@ -11,7 +11,8 @@ class Redirection(db.Model):
 
 class RootResponse(webapp2.RequestHandler):
     def get(self):
-        template_values = {}
+        redirections = Redirection.all().order('-date').fetch(40)
+        template_values = { 'redirections': redirections }
         path = os.path.join(os.path.dirname(__file__), 'interface.html')
         self.response.out.write(template.render(path, template_values))
     def post(self):

@@ -4,30 +4,28 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Trivial Trunk</title>
+  <title>Redirect Leaf</title>
 </head>
 
 
 <body>
 
-<p>Every time this page is loaded, an interaction record is created.</p>
-<p>If you click on the following link you will go to another site.</p>
-<p>That site will confirm that you completed the interaction, giving you a score of one.</p>
-<p><a href="http://trivial-leaf.appspot.com/?d=http://trivial-trunk.appspot.com/&i={{ i }}">Complete your interaction</a></p>
+<p>These are redirect links that track how many times they are accessed.</p>
+<p>It's sort of like <a href="http://bit.ly/">bit.ly</a>, but without all the features and convenience of short links.</p>
+
+<p>Make a new one:</p>
+<p>(build form here)</p>
+
 <ul>
-{% for interaction in interactions %}
+{% for redirection in redirections %}
  <li>
- Interaction created: {{ interaction.date }},
- {% if interaction.score %}
-  has score: {{ interaction.score }}
- {% else %}
-  has no score
- {% endif %}
+ <a href="/go/{{ redirection.key }}">{{ redirection.url }}</a>:
+ {{ redirection.access_count }}
  </li>
 {% endfor %}
 </ul>
 
-<a href="https://github.com/ajschumacher/trivial-trunk"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/ajschumacher/redirect-leaf"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
 </body>
 
